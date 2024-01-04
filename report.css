@@ -1,0 +1,61 @@
+
+/* 
+    Author     : Marietta E. Cameron w/ mods. by Max Levine
+*/
+body {
+    background: #F8F8FF;
+}
+canvas {
+    border:black 1px solid;
+} 
+h1 {
+    color: black;
+    text-shadow: 2px 2px 3px grey;
+    font-size: 24px;
+}/* h1 */
+h2 {
+    color: black;   
+    text-shadow: 2px 2px 3px grey;
+    font-size: 20px;
+}/* h2 */
+p {
+    font-family: verdana;
+    font-size: 16px;
+}/* p */
+
+.projectClass {
+    float: left;
+    width: 45%;
+}/* projectClass */
+.coorClass {
+    float: left;
+    width: 100%;
+}/* coorClass */
+
+.line1 {
+    color: red;
+}
+.line2 {
+    color: blue;
+}
+
+.overviewClass {
+    float: right;
+    width: 45%;
+}/* objectiveClass */
+/* Responsive layout - if width is less than 1000px send objective class full width*/
+@media (max-width: 1400px) {
+    .overviewClass{
+        width: 100%;
+    }
+}
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+  padding: 3px;
+  text-align: left;
+}

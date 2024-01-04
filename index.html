@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="report.css">
+        <title>Max Levine's Entry for CSCI 346 Spring 2020 Final Project: Solar System v.2</title>
+    </head>
+
+    <body onload="main()">
+
+        <script src="three.js"></script>       
+        <script src="SolarSystem.js"></script>
+
+        <h1>Max Levine's Final Project: Solar System v.2</h1>
+
+        <div class="projectClass">  
+
+
+               <canvas id="drawCanvas" width="750" height="510" style="background-color:white">
+                   You are not seeing a canvas image.  Please use a browser that supports the tag, "canvas".
+               </canvas> <br>
+               <small>Hold the up/down arrows to zoom.</small> <br> <br>
+
+                <b>All of this data is represented:</b>
+
+              <table>
+                <tr>
+                  <th></th>
+                  <th>Sun</th>
+                  <th>Mercury</th>
+                  <th>Venus</th>
+                  <th>Earth</th>
+                  <th>Mars</th>
+                  <th>Jupiter</th>
+                  <th>Saturn</th>
+                  <th>Uranus</th>
+                  <th>Neptune</th>
+                  <th>Pluto</th>
+                </tr>
+                <tr>
+                  <td>radius (km)</td>
+                  <td>696,000</td>
+                  <td>2,440</td>
+                  <td>6,052</td>
+                  <td>6,378</td>
+                  <td>3,396</td>
+                  <td>71,492</td>
+                  <td>60,268</td>
+                  <td>25,559</td>
+                  <td>24,764</td>
+                  <td>1,185</td>
+                </tr>
+                <tr>
+                  <td>distance from sun (10<sup>6</sup> km)</td>
+                  <td>-</td>
+                  <td>57.9</td>
+                  <td>108.2</td>
+                  <td>149.6</td>
+                  <td>227.9</td>
+                  <td>778.6</td>
+                  <td>1,433.5</td>
+                  <td>2,872.5</td>
+                  <td>4,495.1</td>
+                  <td>5,906.4</td>
+                </tr>
+                <tr>
+                  <td>orbital speed (km/s)</td>
+                  <td>-</td>
+                  <td>47.4</td>
+                  <td>35</td>
+                  <td>29.8</td>
+                  <td>24.1</td>
+                  <td>13.1</td>
+                  <td>9.7</td>
+                  <td>6.8</td>
+                  <td>5.4</td>
+                  <td>4.7</td>
+                </tr>
+                <tr>
+                  <td>orbital inclination (degrees)</td>
+                  <td>-</td>
+                  <td>7</td>
+                  <td>3.4</td>
+                  <td>0</td>
+                  <td>1.9</td>
+                  <td>1.3</td>
+                  <td>2.5</td>
+                  <td>0.8</td>
+                  <td>1.8</td>
+                  <td>17.2</td>
+                </tr>
+                <tr>
+                  <td>orbital period (days)</td>
+                  <td>-</td>
+                  <td>88</td>
+                  <td>224.7</td>
+                  <td>365.2</td>
+                  <td>687</td>
+                  <td>4,331</td>
+                  <td>10,747</td>
+                  <td>30,589</td>
+                  <td>59,800</td>
+                  <td>90,560</td>
+                </tr>
+                <tr>
+                  <td>has moon</td>
+                  <td>-</td>
+                  <td>no</td>
+                  <td>no</td>
+                  <td>yes (1)</td>
+                  <td>yes (2)</td>
+                  <td>yes (67)</td>
+                  <td>yes (62)</td>
+                  <td>yes (27)</td>
+                  <td>yes (14)</td>
+                  <td>yes (5)</td>
+                </tr>
+              </table>
+              <small><a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">Source: NASA Planetary Fact Sheet</a></small>
+
+        </div>
+
+
+        <div class="overviewClass">
+
+              <h2>Developers:</h2> 
+              <p>
+               Max Levine - computer science major, class of 2021-2
+              </p> 
+
+              <h2>Overview:</h2> 
+              <p>
+               This is a somewhat to-scale model of our solar system. Unless you zoom in on the earth and clip inside it, then it is out of this world!
+              </p>
+
+              <p>
+                Most things are "somewhat" to-scale! Orbit distance and radius of all the planets were scaled down exponentially: for radius, I took the cube root, and for orbit distance, I took the 3.5 root. A to-scale atmosphere layer is represented on the terrestrial planets; it's hard to see (atmosphere is very small compared to planet radius), but the effect is easiest to see on earth. The period and relative orbit speeds are sped up but to-scale. If the planet has one or more moons, then the planet has one moon circling it; the size and orbit of the moons are not to-scale. The degree of orbital inclination (variance from the orbital plane) for each planet is also included (but the planets in our solar system stick closely to the orbital plane).
+              </p>
+
+              <p>
+                More accurate moons, in addition to accurate planet axial rotation, could be added in the future.
+              </p>
+
+              <p>
+                All the textures were done by me with mixed media and Photoshop.
+              </p>
+
+              <p>
+                <a href="http://arden.cs.unca.edu/~mlevine/CSCI346.Spring2020/Assignment3/">Compare to my previous solar system project.</a>
+              </p>
+
+              <h2>Technical Elements:</h2> 
+              
+              <p>
+                <b>Animation (objects):</b> The sun combines two spheres with low-poly count that rotate independently, creating a cool flowing effect. All of the planets orbit the sun. Some of the planets have moons orbiting them. All of them rotate on their axes as well.<br>
+                <b>Animation (camera):</b> Starting from close to the sun, the camera slowly zooms outward, and the user can also control the zoom with the up/down arrow keys.<br>
+                <b>Lighting effects:</b> The sun, which has a lambert mesh, uses the emissive parameter to make it glow. There is a point light source emitting from the sun, as well as a small amount of ambient light. The ambient light (coming from space) is blue, and the point light (coming from the sun) is white.<br>
+                <b>Texture maps:</b> I made the textures for the planets with mixed media and Photoshop. The texture dimensions are in powers of 2. The type of mesh used is lambert, except for the halos/atmospheres, which use a basic mesh. Coloring the lambert material allowed for more variety for the textures.<br>
+                <b>Transparency:</b> To enhance the sun's glow, I added a halo with a transparent sphere (best visible zoomed in). I added a similar effect to account for the atmospheres on each of the terrestrial planets. Atmosphere is miniscule compared to planet radius, so it's hard to see, but the effect is most visible on earth, which has a thick atmosphere.
+              </p>
+
+
+        </div>
+
+    </body>
+</html>
